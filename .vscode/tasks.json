@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile bas file",
+            "type": "shell",
+            "command": "\"qb64\"",
+            "args": ["-x", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe"],
+            "group":{
+                "kind": "build",
+                "isDefault": false
+            },
+        },
+
+        {
+            "label": "Run executable",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+        },
+
+        {
+            "label": "Compile and run bas file",
+            "dependsOrder": "sequence",
+            "dependsOn": ["Compile bas file", "Run executable"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
